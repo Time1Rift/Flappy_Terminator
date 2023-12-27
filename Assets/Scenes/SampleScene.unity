@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5de766659a5bc14e88a822e5aec9241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreCollection: {fileID: 1413424667}
+  _scoreCounter: {fileID: 1413424676}
   _score: {fileID: 234066830}
 --- !u!1 &307452331
 GameObject:
@@ -893,12 +893,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1183,7 +1183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5de766659a5bc14e88a822e5aec9241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreCollection: {fileID: 1413424667}
+  _scoreCounter: {fileID: 1413424676}
   _score: {fileID: 960128529}
 --- !u!1 &1047210337
 GameObject:
@@ -1870,12 +1870,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2022,10 +2022,9 @@ GameObject:
   - component: {fileID: 1413424672}
   - component: {fileID: 1413424674}
   - component: {fileID: 1413424670}
+  - component: {fileID: 1413424676}
   - component: {fileID: 1413424669}
   - component: {fileID: 1413424668}
-  - component: {fileID: 1413424667}
-  - component: {fileID: 1413424666}
   - component: {fileID: 1413424665}
   - component: {fileID: 1413424675}
   m_Layer: 0
@@ -2047,32 +2046,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bec75486764cc4fb0af4866981aa12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1413424666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413424664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d7697c9a55de4346be4eff802e6c9ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lengthBetweenGettingPoints: 2
---- !u!114 &1413424667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413424664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d7697c9a55de4346be4eff802e6c9ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lengthBetweenGettingPoints: 2
 --- !u!114 &1413424668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,6 +2241,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnerBullets: {fileID: 2144079040}
   _shootPoint: {fileID: 686217273}
+--- !u!114 &1413424676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413424664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32643f2af89c75449b51f3acbdf764dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lengthBetweenGettingPoints: 2
 --- !u!1 &1463552823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,12 +2609,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
