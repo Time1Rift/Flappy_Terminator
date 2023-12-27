@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-[RequireComponent(typeof(PlayerMover), typeof(ScoreCollection), typeof(PlayerCollisionHandler))]
+[RequireComponent(typeof(PlayerMover), typeof(ScoreCounter), typeof(PlayerCollisionHandler))]
 public class Player : MonoBehaviour
 {
     private PlayerMover _mover;
-    private ScoreCollection _score;
+    private ScoreCounter _score;
     private PlayerCollisionHandler _handler;
 
     public event Action GameOver;
@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _mover = GetComponent<PlayerMover>();
-        _score = GetComponent<ScoreCollection>();
+        _score = GetComponent<ScoreCounter>();
         _handler = GetComponent<PlayerCollisionHandler>();
     }
 

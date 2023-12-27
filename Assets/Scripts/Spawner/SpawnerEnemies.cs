@@ -47,14 +47,14 @@ public class SpawnerEnemies : ObjectPool
 
     private IEnumerator ReleaseEnemy()
     {
-        WaitForSeconds cooldown = new WaitForSeconds(_secondsBetweenSpawn);
+        WaitForSeconds wait = new WaitForSeconds(_secondsBetweenSpawn);
         
         while (enabled)
         {
             if (TryGetObject(out GameObject enemy))
                 ActivateEnemy(enemy);
 
-            yield return cooldown;
+            yield return wait;
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ScoreCollection : MonoBehaviour
+public class ScoreCounter : MonoBehaviour
 {
     [SerializeField]private int _lengthBetweenGettingPoints = 2;
 

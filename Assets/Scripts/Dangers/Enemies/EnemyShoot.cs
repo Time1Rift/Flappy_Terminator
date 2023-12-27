@@ -27,17 +27,17 @@ public class EnemyShoot : MonoBehaviour
     private void StopFire()
     {
         if (_fire != null)
-            StopCoroutine(Fire());
+            StopCoroutine(_fire);
     }
 
     private IEnumerator Fire()
     {
-        WaitForSeconds cooldown = new WaitForSeconds(_secondsBetweenSpawn);
+        WaitForSeconds wait = new WaitForSeconds(_secondsBetweenSpawn);
         
         while (enabled)
         {
             _spawnerBullets.Shoot(_shootPoint, _direction, _isRotated);
-            yield return cooldown;
+            yield return wait;
         }
     }
 }
