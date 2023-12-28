@@ -1,25 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpawnerEnemies : ObjectPool
+public class SpawnerEnemies : ObjectPool<Enemy>
 {
-    [SerializeField] private GameObject _template;
     [SerializeField] private float _secondsBetweenSpawn;
     [SerializeField] private float _maxSpawnPositionY;
     [SerializeField] private float _minSpawnPositionY;
     [SerializeField] private SpawnerBullets _spawnerBullets;
 
     private Coroutine _releaseEnemy;
-
-    private void Awake()
-    {
-        Initializ(_template);
-
-        foreach (var item in Pool)
-            item.GetComponent<EnemyShoot>().Init(_spawnerBullets);
-
-        LaunchLiberationEnemies();
-    }
 
     private void OnDisable()
     {
@@ -32,27 +21,28 @@ public class SpawnerEnemies : ObjectPool
         _releaseEnemy = StartCoroutine(ReleaseEnemy());
     }
 
-    private void ActivateEnemy(GameObject enemy)
-    {
-        float spawnPositionY = Random.Range(_minSpawnPositionY, _maxSpawnPositionY);
-        enemy.transform.position = new Vector3(transform.position.x, spawnPositionY, transform.position.z);
-        enemy.SetActive(true);
-    }
-
-    private void StopReleaseEnemy()
+    public void StopReleaseEnemy()
     {
         if (_releaseEnemy != null)
             StopCoroutine(_releaseEnemy);
     }
 
+    private void ActivateEnemy(Enemy enemy)
+    {
+        enemy.GetComponent<EnemyShoot>().Init(_spawnerBullets);
+        float spawnPositionY = Random.Range(_minSpawnPositionY, _maxSpawnPositionY);
+        enemy.transform.position = new Vector3(transform.position.x, spawnPositionY, transform.position.z);
+        enemy.gameObject.SetActive(true);
+    }
+
     private IEnumerator ReleaseEnemy()
     {
         WaitForSeconds wait = new WaitForSeconds(_secondsBetweenSpawn);
-        
+
         while (enabled)
         {
-            if (TryGetObject(out GameObject enemy))
-                ActivateEnemy(enemy);
+            Enemy enemy = GetObject(Prefab);
+            ActivateEnemy(enemy);
 
             yield return wait;
         }

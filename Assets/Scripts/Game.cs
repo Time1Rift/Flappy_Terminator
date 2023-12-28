@@ -34,6 +34,7 @@ public class Game : MonoBehaviour
     {
         _score.enabled = false;
         Time.timeScale = 0;
+        _spawners.StopWork();
         _gameOverScreen.Open();
     }
 
@@ -42,8 +43,7 @@ public class Game : MonoBehaviour
         _score.enabled = true;
         _startScreen.Close();
         _player.Restart();
-        _spawners.Restart();
-        Time.timeScale = 1;
+        _spawners.Restart();        
     }
 
     private void OnRestartGameButtonClick()
@@ -52,5 +52,6 @@ public class Game : MonoBehaviour
         _player.gameObject.SetActive(false);
         _spawners.Restart();
         _startScreen.Open();
+        Time.timeScale = 1;
     }
 }

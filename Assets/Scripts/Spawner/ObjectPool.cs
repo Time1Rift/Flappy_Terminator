@@ -2,34 +2,48 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class ObjectPool : MonoBehaviour
+public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 {
+    [SerializeField] protected T Prefab;
+
     [SerializeField] private Transform _container;
-    [SerializeField] private int _capasity;
 
-    private List<GameObject> _pool = new();
+    private List<T> _pool = new();
 
-    protected IEnumerable<GameObject> Pool => _pool;
+    protected IEnumerable<T> Pool => _pool;
 
     public void Restart()
     {
         foreach (var item in _pool)
-            item.SetActive(false);
+            item.gameObject.SetActive(false);
     }
 
-    protected void Initializ(GameObject prefab)
+    protected T GetObject(T prefab)
     {
-        for (int i = 0; i < _capasity; i++)
+        T result = _pool.FirstOrDefault(item => item.gameObject.activeSelf == false);
+
+        if (result == null)
         {
-            GameObject newObject = Instantiate(prefab, _container);
-            newObject.SetActive(false);
-            _pool.Add(newObject);
+            result = Instantiate(prefab, _container);
+            result.gameObject.SetActive(false);
+            _pool.Add(result);
         }
+
+        return result;
     }
 
-    protected bool TryGetObject(out GameObject result )
+    protected T GetObject(List<T> prefab)
     {
-        result = _pool.FirstOrDefault(item => item.activeSelf == false);
-        return result != null;
+        T result = _pool.FirstOrDefault(item => item.gameObject.activeSelf == false);
+
+        if (result == null)
+        {
+            int index = Random.Range(0, prefab.Count);
+            result = Instantiate(prefab[index], _container);
+            result.gameObject.SetActive(false);
+            _pool.Add(result);
+        }
+
+        return result;
     }
 }
