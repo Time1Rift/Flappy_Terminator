@@ -23,19 +23,19 @@ public class Spawners : MonoBehaviour
 
     public void StopWork()
     {
-        foreach (var pool in _poolsEnemy)
+        foreach (SpawnerEnemies pool in _poolsEnemy)
             pool.StopReleaseEnemy();
     }
 
     public void Restart()
     {
-        foreach (var pool in _poolsEnemy)
+        foreach (SpawnerEnemies pool in _poolsEnemy)
         {
             pool.Restart();
             pool.LaunchLiberationEnemies();
         }
 
-        foreach (var pool in _poolsBullet)
+        foreach (SpawnerBullets pool in _poolsBullet)
             pool.Restart();
     }
 }

@@ -33,8 +33,8 @@ public class Game : MonoBehaviour
     private void OnGameOver()
     {
         _score.enabled = false;
-        Time.timeScale = 0;
         _spawners.StopWork();
+        Time.timeScale = 0;
         _gameOverScreen.Open();
     }
 
@@ -50,7 +50,6 @@ public class Game : MonoBehaviour
     {
         _gameOverScreen.Close();
         _player.gameObject.SetActive(false);
-        _spawners.Restart();
         _startScreen.Open();
         Time.timeScale = 1;
     }
