@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 {
-    [SerializeField] protected T Prefab;
-
     [SerializeField] private Transform _container;
 
     private List<T> _pool = new();

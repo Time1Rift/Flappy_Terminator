@@ -33,7 +33,7 @@ public class Game : MonoBehaviour
     private void OnGameOver()
     {
         _score.enabled = false;
-        _spawners.StopWork();
+        _spawners.LaunchEnemies();
         Time.timeScale = 0;
         _gameOverScreen.Open();
     }
@@ -43,7 +43,7 @@ public class Game : MonoBehaviour
         _score.enabled = true;
         _startScreen.Close();
         _player.Restart();
-        _spawners.Restart();        
+        _spawners.LaunchEnemies();        
     }
 
     private void OnRestartGameButtonClick()
@@ -51,6 +51,7 @@ public class Game : MonoBehaviour
         _gameOverScreen.Close();
         _player.gameObject.SetActive(false);
         _startScreen.Open();
+        _spawners.Restart();
         Time.timeScale = 1;
     }
 }

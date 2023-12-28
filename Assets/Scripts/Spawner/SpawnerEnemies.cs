@@ -1,8 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerEnemies : ObjectPool<Enemy>
 {
+    [SerializeField] private List<Enemy> _enemyPrefab;
     [SerializeField] private float _secondsBetweenSpawn;
     [SerializeField] private float _maxSpawnPositionY;
     [SerializeField] private float _minSpawnPositionY;
@@ -41,7 +43,7 @@ public class SpawnerEnemies : ObjectPool<Enemy>
 
         while (enabled)
         {
-            Enemy enemy = GetObject(Prefab);
+            Enemy enemy = GetObject(_enemyPrefab);
             ActivateEnemy(enemy);
 
             yield return wait;

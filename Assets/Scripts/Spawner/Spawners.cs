@@ -21,21 +21,21 @@ public class Spawners : MonoBehaviour
         }
     }    
 
-    public void StopWork()
+    public void LaunchEnemies()
     {
         foreach (SpawnerEnemies pool in _poolsEnemy)
-            pool.StopReleaseEnemy();
+            pool.LaunchLiberationEnemies();
     }
 
     public void Restart()
     {
         foreach (SpawnerEnemies pool in _poolsEnemy)
         {
+            pool.StopReleaseEnemy();
             pool.Restart();
-            pool.LaunchLiberationEnemies();
         }
 
         foreach (SpawnerBullets pool in _poolsBullet)
-            pool.Restart();
+            pool.Restart();        
     }
 }
