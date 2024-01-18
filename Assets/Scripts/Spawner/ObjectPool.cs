@@ -22,11 +22,11 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
     {
         _result = _pool.FirstOrDefault(item => item.gameObject.activeSelf == false);
 
-        if (_result== null)
+        if (_result == null)
         {
-            _result= Instantiate(prefab, _container);
+            _result = Instantiate(prefab, _container);
             _result.gameObject.SetActive(false);
-            _pool.Add(result);
+            _pool.Add(_result);
         }
 
         return _result;
@@ -36,12 +36,12 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
     {
         _result = _pool.FirstOrDefault(item => item.gameObject.activeSelf == false);
 
-        if (_result== null)
+        if (_result == null)
         {
             _index = Random.Range(0, prefab.Count);
-            _result= Instantiate(prefab[_index], _container);
+            _result = Instantiate(prefab[_index], _container);
             _result.gameObject.SetActive(false);
-            _pool.Add(result);
+            _pool.Add(_result);
         }
 
         return _result;
