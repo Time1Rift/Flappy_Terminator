@@ -7,6 +7,8 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField] private Transform _container;
 
     private List<T> _pool = new();
+    private int _index;
+    private T _result;
 
     protected IEnumerable<T> Pool => _pool;
 
@@ -18,30 +20,30 @@ public abstract class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 
     protected T GetObject(T prefab)
     {
-        T result = _pool.FirstOrDefault(item => item.gameObject.activeSelf == false);
+        _result = _pool.FirstOrDefault(item => item.gameObject.activeSelf == false);
 
-        if (result == null)
+        if (_result== null)
         {
-            result = Instantiate(prefab, _container);
-            result.gameObject.SetActive(false);
+            _result= Instantiate(prefab, _container);
+            _result.gameObject.SetActive(false);
             _pool.Add(result);
         }
 
-        return result;
+        return _result;
     }
 
     protected T GetObject(List<T> prefab)
     {
-        T result = _pool.FirstOrDefault(item => item.gameObject.activeSelf == false);
+        _result = _pool.FirstOrDefault(item => item.gameObject.activeSelf == false);
 
-        if (result == null)
+        if (_result== null)
         {
-            int index = Random.Range(0, prefab.Count);
-            result = Instantiate(prefab[index], _container);
-            result.gameObject.SetActive(false);
+            _index = Random.Range(0, prefab.Count);
+            _result= Instantiate(prefab[_index], _container);
+            _result.gameObject.SetActive(false);
             _pool.Add(result);
         }
 
-        return result;
+        return _result;
     }
 }
